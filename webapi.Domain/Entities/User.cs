@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace webapi.Domain.Entities
+﻿namespace webapi.Domain.Entities
 {
     public class User : IEntity
     {
