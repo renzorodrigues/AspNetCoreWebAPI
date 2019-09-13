@@ -7,7 +7,7 @@ namespace webapi.Domain.Repositories
     {
         IEnumerable<T> getAll();
         T getById(int id);
-        void create(T entity);
+        void insert(T entity);
         void update(T entity);
         void delete(int id);
     }

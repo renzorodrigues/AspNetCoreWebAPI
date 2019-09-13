@@ -21,32 +21,12 @@ namespace webapi.Data.Repositories
             return Session.Query<T>();
         }
 
-        public T GetById(int id)
-        {
-            return Session.Get<T>(id);
-        }
-
-        public void Create(T entity)
-        {
-            Session.Save(entity);
-        }
-
-        public void Update(T entity)
-        {
-            Session.Update(entity);
-        }
-
-        public void Delete(int id)
-        {
-            Session.Delete(Session.Load<T>(id));
-        }
-
         public T getById(int id)
         {
             throw new System.NotImplementedException();
         }
 
-        public void create(T entity)
+        public void insert(T entity)
         {
             throw new System.NotImplementedException();
         }

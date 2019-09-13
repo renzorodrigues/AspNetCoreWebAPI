@@ -6,9 +6,6 @@ namespace webapi.Data.MappingOverrides
 {
     public class UserMap : IAutoMappingOverride<User>
     {
-        public void Override(AutoMapping<User> mapping)
-        {
-            
-        }
+        public void Override(AutoMapping<User> mapping) { }
     }
 }
