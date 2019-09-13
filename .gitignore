@@ -1,4 +1,4 @@
-webapi\webapi.Api\obj.*
-webapi\webapi.Api\bin.*
-webapi\webapi.Domain\obj.*
-webapi\webapi.Domain\bin.*
+webapi/webapi.Api/obj.*
+webapi/webapi.Api/bin.*
+webapi/webapi.Domain/obj.*
+webapi/webapi.Domain/bin.*
