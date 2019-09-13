@@ -10,6 +10,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using webapi.Data.Helpers;
+using webapi.Data.Repositories;
+using webapi.Domain.Entities;
+using webapi.Domain.Helpers;
+using webapi.Domain.Repositories;
+using webapi.Domain.Services;
 
 namespace webapi.Api
 {
@@ -26,6 +32,9 @@ namespace webapi.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IRepository<User>, Repository<User>>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
