@@ -1,5 +1,3 @@
-webapi/webapi.Api/obj.*
-webapi/webapi.Api/bin.*
-webapi/webapi.Domain/obj.*
-webapi/webapi.Domain/bin.*
-webapi/.vscode
+.vscode
+obj
+bin
