@@ -7,14 +7,14 @@ namespace webapi.Domain.Services
 {
     public class UserService : IUserService
     {
-        private readonly IRepository<User> _userRepo;
+        private readonly IRepository<User> _repository;
 
-        public UserService(IRepository<User> userRepo){
-            this._userRepo = userRepo;
+        public UserService(IRepository<User> repository){
+            this._repository = repository;
         }
         public IEnumerable<User> getAll()
         {
-            return _userRepo.getAll().ToList();
+            return _repository.getAll().ToList();
         }
     }
 }
