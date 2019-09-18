@@ -11,7 +11,8 @@ namespace webapi.Data.Repositories
     public class Repository<T> : IRepository<T> where T : IEntity
     {
         private UnitOfWork _unitOfWork;
-        public Repository(IUnitOfWork unitOfWork){
+        public Repository(IUnitOfWork unitOfWork)
+        {
             this._unitOfWork = (UnitOfWork)unitOfWork;
         }
 
