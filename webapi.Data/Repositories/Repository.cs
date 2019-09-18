@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using NHibernate;
 using webapi.Data.Helpers;
 using webapi.Domain.Entities;
@@ -11,29 +12,31 @@ namespace webapi.Data.Repositories
     {
         private UnitOfWork _unitOfWork;
         public Repository(IUnitOfWork unitOfWork){
-            _unitOfWork = (UnitOfWork)unitOfWork;
+            this._unitOfWork = (UnitOfWork)unitOfWork;
         }
 
         protected ISession Session { get { return _unitOfWork.Session; } }
 
         public IEnumerable<T> getAll()
         {
-            return Session.Query<T>();
+            return this.Session.Query<T>();
         }
 
         public T getById(int id)
         {
-            throw new System.NotImplementedException();
+            return this.Session.Get<T>(id);
         }
 
         public void insert(T entity)
         {
-            throw new System.NotImplementedException();
+            this.Session.Save(entity);
         }
 
         public void update(T entity)
         {
-            throw new System.NotImplementedException();
+            this._unitOfWork.BeginTransaction();
+            this.Session.Update(entity);
+            this._unitOfWork.Commit();
         }
 
         public void delete(int id)

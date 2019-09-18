@@ -26,7 +26,11 @@ namespace webapi.Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IProductService, ProductService>();
+
             services.AddScoped<IRepository<User>, Repository<User>>();
+            services.AddScoped<IRepository<Product>, Repository<Product>>();
+            
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 

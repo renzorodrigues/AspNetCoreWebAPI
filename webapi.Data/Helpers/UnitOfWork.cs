@@ -27,6 +27,7 @@ namespace webapi.Data.Helpers
                     Database("renzodb")
                 ))
                 .Mappings(x => x.AutoMappings.Add(AutoMap.AssemblyOf<User>(new AutomappingConfiguration()).UseOverridesFromAssemblyOf<UserMap>()))
+                .Mappings(x => x.AutoMappings.Add(AutoMap.AssemblyOf<Product>(new AutomappingConfiguration()).UseOverridesFromAssemblyOf<ProductMap>()))
                 .ExposeConfiguration(config => new SchemaUpdate(config).Execute(false, true))
                 .BuildSessionFactory();
         }
