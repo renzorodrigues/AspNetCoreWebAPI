@@ -4,9 +4,9 @@ using webapi.Domain.Entities;
 
 namespace webapi.Data.MappingOverrides
 {
-    public class AvaliadorMap : IAutoMappingOverride< Avaliador>
+    public class EvaluatorMap : IAutoMappingOverride< Evaluator>
     {
-        public void Override(AutoMapping< Avaliador> mapping)
+        public void Override(AutoMapping< Evaluator> mapping)
         {
             
         }

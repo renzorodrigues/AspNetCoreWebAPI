@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using NHibernate;
@@ -23,7 +24,7 @@ namespace webapi.Data.Repositories
             return this.Session.Query<T>();
         }
 
-        public T getById(string id)
+        public T getById(Guid id)
         {
             return this.Session.Get<T>(id);
         }
@@ -35,14 +36,12 @@ namespace webapi.Data.Repositories
 
         public void update(T entity)
         {
-            this._unitOfWork.BeginTransaction();
             this.Session.Update(entity);
-            this._unitOfWork.Commit();
         }
 
-        public void delete(string id)
+        public void delete(T entity)
         {
-            throw new System.NotImplementedException();
+            this.Session.Delete(entity);
         }
     }
 }

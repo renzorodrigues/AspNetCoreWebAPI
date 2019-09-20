@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using webapi.Domain.Services;
@@ -6,37 +7,37 @@ namespace webapi.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AvaliadoresController : ControllerBase
+    public class EvaluatorsController : ControllerBase
     {
-        private readonly IAvaliadorService _service;
-        public AvaliadoresController(IAvaliadorService service)
+        private readonly IEvaluatorService _service;
+        public EvaluatorsController(IEvaluatorService service)
         {
             this._service = service;
         }
 
-        // GET api/avaliadores
+        // GET api/Evaluatores
         [HttpGet]
         public ActionResult<IEnumerable<string>> Gets()
         {
             return Ok(this._service.getAll());
         }
 
-        // GET api/avaliadores/5
+        // GET api/Evaluatores/5
         [HttpGet("{id}")]
-        public ActionResult<string> GetById(string id)
+        public ActionResult<string> GetById(Guid id)
         {
             return Ok(_service.getById(id));
         }
 
-        // POST api/avaliadores
+        // POST api/Evaluatores
         [HttpPost("")]
         public void Post([FromBody] string value) { }
 
-        // PUT api/avaliadores/5
+        // PUT api/Evaluatores/5
         [HttpPut("{id}")]
         public void Put(string id, [FromBody] string value) { }
 
-        // DELETE api/avaliadores/5
+        // DELETE api/Evaluatores/5
         [HttpDelete("{id}")]
         public void DeleteById(string id) { }
     }

@@ -4,9 +4,9 @@ using webapi.Domain.Entities;
 
 namespace webapi.Data.MappingOverrides
 {
-    public class ContatotMap : IAutoMappingOverride< Contato>
+    public class ContacttMap : IAutoMappingOverride< Contact>
     {
-        public void Override(AutoMapping<Contato> mapping)
+        public void Override(AutoMapping<Contact> mapping)
         {
             
         }

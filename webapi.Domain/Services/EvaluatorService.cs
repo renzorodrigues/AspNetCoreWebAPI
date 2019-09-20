@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using webapi.Domain.Entities;
@@ -5,19 +6,19 @@ using webapi.Domain.Repositories;
 
 namespace webapi.Domain.Services
 {
-    public class AvaliadorService : IAvaliadorService
+    public class EvaluatorService : IEvaluatorService
     {
-        private readonly IRepository<Avaliador> _repository;
+        private readonly IRepository<Evaluator> _repository;
 
-        public AvaliadorService(IRepository<Avaliador> repository){
+        public EvaluatorService(IRepository<Evaluator> repository){
             this._repository = repository;
         }
-        public IEnumerable<Avaliador> getAll()
+        public IEnumerable<Evaluator> getAll()
         {
             return this._repository.getAll().ToList();
         }
 
-        public Avaliador getById(string id)
+        public Evaluator getById(Guid id)
         {
             return _repository.getById(id);
         }
