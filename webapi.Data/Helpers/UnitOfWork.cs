@@ -27,7 +27,7 @@ namespace webapi.Data.Helpers
                     Database("ccaudb")
                 ))
                 .Mappings(x => x.AutoMappings.Add(AutoMap.AssemblyOf<Atendido>(new AutomappingConfiguration()).UseOverridesFromAssemblyOf<AtendidoMap>()))
-                .Mappings(x => x.AutoMappings.Add(AutoMap.AssemblyOf<Avaliador>(new AutomappingConfiguration()).UseOverridesFromAssemblyOf<AvaliadortMap>()))
+                .Mappings(x => x.AutoMappings.Add(AutoMap.AssemblyOf<Avaliador>(new AutomappingConfiguration()).UseOverridesFromAssemblyOf<AvaliadorMap>()))
                 .ExposeConfiguration(config => new SchemaUpdate(config).Execute(false, true))
                 .BuildSessionFactory();
         }
