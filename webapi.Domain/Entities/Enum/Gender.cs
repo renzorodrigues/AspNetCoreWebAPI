@@ -4,6 +4,5 @@ namespace webapi.Domain.Entities.Enum
     {
         Male = 0,
         Female = 1
-
     }
 }
