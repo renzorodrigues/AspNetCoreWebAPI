@@ -6,9 +6,9 @@ namespace webapi.Domain.Repositories
     public interface IRepository<T> where T : IEntity
     {
         IEnumerable<T> getAll();
-        T getById(int id);
+        T getById(string id);
         void insert(T entity);
         void update(T entity);
-        void delete(int id);
+        void delete(string id);
     }
 }

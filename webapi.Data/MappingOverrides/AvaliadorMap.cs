@@ -4,8 +4,11 @@ using webapi.Domain.Entities;
 
 namespace webapi.Data.MappingOverrides
 {
-    public class UserMap : IAutoMappingOverride<User>
+    public class AvaliadortMap : IAutoMappingOverride< Avaliador>
     {
-        public void Override(AutoMapping<User> mapping) { }
+        public void Override(AutoMapping< Avaliador> mapping)
+        {
+            
+        }
     }
 }

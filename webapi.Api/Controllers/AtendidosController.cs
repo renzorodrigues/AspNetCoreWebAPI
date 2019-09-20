@@ -7,43 +7,43 @@ namespace webapi.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class AtendidosController : ControllerBase
     {
-        private readonly IUserService _service;
-        public UsersController(IUserService service)
+        private readonly IAtendidoService _service;
+        public AtendidosController(IAtendidoService service)
         {
             this._service = service;
         }
 
-        // GET api/users
+        // GET api/atendidos
         [HttpGet]
         public ActionResult<IEnumerable<string>> GetAll()
         {
             return Ok(this._service.getAll());
         }
 
-        // GET api/users/5
+        // GET api/atendidos/5
         [HttpGet("{id}")]
-        public ActionResult<string> GetById(int id)
+        public ActionResult<string> GetById(string id)
         {
             return Ok(_service.getById(id));
         }
 
-        // POST api/users
+        // POST api/atendidos
         [HttpPost]
-        public void Post([FromBody] User user)
+        public void Post([FromBody] Atendido Atendido)
         {
-            this._service.insert(user);
+            this._service.insert(Atendido);
         }
 
-        // PUT api/users/5
+        // PUT api/atendidos/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] User user)
+        public void Put(string id, [FromBody] Atendido Atendido)
         {
-            this._service.update(id, user);
+            this._service.update(id, Atendido);
         }
 
-        // DELETE api/users/5
+        // DELETE api/atendidos/5
         [HttpDelete("{id}")]
         public void DeleteById(int id) { }
     }

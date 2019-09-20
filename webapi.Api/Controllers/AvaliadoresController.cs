@@ -1,44 +1,43 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using webapi.Domain.Services;
-//using webapi.Api.Models;
 
 namespace webapi.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductsController : ControllerBase
+    public class AvaliadoresController : ControllerBase
     {
-        private readonly IProductService _service;
-        public ProductsController(IProductService service)
+        private readonly IAvaliadorService _service;
+        public AvaliadoresController(IAvaliadorService service)
         {
             this._service = service;
         }
 
-        // GET api/products
+        // GET api/avaliadores
         [HttpGet]
         public ActionResult<IEnumerable<string>> Gets()
         {
             return Ok(this._service.getAll());
         }
 
-        // GET api/products/5
+        // GET api/avaliadores/5
         [HttpGet("{id}")]
-        public ActionResult<string> GetById(int id)
+        public ActionResult<string> GetById(string id)
         {
             return Ok(_service.getById(id));
         }
 
-        // POST api/products
+        // POST api/avaliadores
         [HttpPost("")]
         public void Post([FromBody] string value) { }
 
-        // PUT api/products/5
+        // PUT api/avaliadores/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value) { }
+        public void Put(string id, [FromBody] string value) { }
 
-        // DELETE api/products/5
+        // DELETE api/avaliadores/5
         [HttpDelete("{id}")]
-        public void DeleteById(int id) { }
+        public void DeleteById(string id) { }
     }
 }

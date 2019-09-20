@@ -22,12 +22,12 @@ namespace webapi.Data.Helpers
             _sessionFactory = Fluently.Configure()
                 .Database(MySQLConfiguration.Standard.ConnectionString(
                     x => x.Server("localhost").
-                    Username("renzo").
-                    Password("123456").
-                    Database("renzodb")
+                    Username("root").
+                    Password("123").
+                    Database("ccaudb")
                 ))
-                .Mappings(x => x.AutoMappings.Add(AutoMap.AssemblyOf<User>(new AutomappingConfiguration()).UseOverridesFromAssemblyOf<UserMap>()))
-                .Mappings(x => x.AutoMappings.Add(AutoMap.AssemblyOf<Product>(new AutomappingConfiguration()).UseOverridesFromAssemblyOf<ProductMap>()))
+                .Mappings(x => x.AutoMappings.Add(AutoMap.AssemblyOf<Atendido>(new AutomappingConfiguration()).UseOverridesFromAssemblyOf<AtendidoMap>()))
+                .Mappings(x => x.AutoMappings.Add(AutoMap.AssemblyOf<Avaliador>(new AutomappingConfiguration()).UseOverridesFromAssemblyOf<AvaliadortMap>()))
                 .ExposeConfiguration(config => new SchemaUpdate(config).Execute(false, true))
                 .BuildSessionFactory();
         }

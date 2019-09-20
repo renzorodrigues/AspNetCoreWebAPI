@@ -23,7 +23,7 @@ namespace webapi.Data.Repositories
             return this.Session.Query<T>();
         }
 
-        public T getById(int id)
+        public T getById(string id)
         {
             return this.Session.Get<T>(id);
         }
@@ -40,7 +40,7 @@ namespace webapi.Data.Repositories
             this._unitOfWork.Commit();
         }
 
-        public void delete(int id)
+        public void delete(string id)
         {
             throw new System.NotImplementedException();
         }

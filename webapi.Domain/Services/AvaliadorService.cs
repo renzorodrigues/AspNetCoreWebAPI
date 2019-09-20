@@ -5,19 +5,19 @@ using webapi.Domain.Repositories;
 
 namespace webapi.Domain.Services
 {
-    public class ProductService : IProductService
+    public class AvaliadorService : IAvaliadorService
     {
-        private readonly IRepository<Product> _repository;
+        private readonly IRepository<Avaliador> _repository;
 
-        public ProductService(IRepository<Product> repository){
+        public AvaliadorService(IRepository<Avaliador> repository){
             this._repository = repository;
         }
-        public IEnumerable<Product> getAll()
+        public IEnumerable<Avaliador> getAll()
         {
             return this._repository.getAll().ToList();
         }
 
-        public Product getById(int id)
+        public Avaliador getById(string id)
         {
             return _repository.getById(id);
         }
