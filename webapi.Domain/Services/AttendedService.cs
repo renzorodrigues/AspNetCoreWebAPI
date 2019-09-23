@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using webapi.Domain.Entities;
 using webapi.Domain.Helpers;
@@ -37,19 +38,19 @@ namespace webapi.Domain.Services
             return this._repository.getById(id);
         }
 
-        public void insert(Attended Attended)
+        public void insert(Attended attended)
         {
             this._unitOfWork.BeginTransaction();
 
-            this.newGuid(Attended);
+            this.newGuid(attended);
            
-            if (Attended.Contact != null)
-                this._repositoryContact.insert(Attended.Contact);
+            if (attended.Contact != null)
+                this._repositoryContact.insert(attended.Contact);
             
-            if (Attended.Tutor != null)
-                this._repositoryTutor.insert(Attended.Tutor);
+            if (attended.Tutor != null)
+                this._repositoryTutor.insert(attended.Tutor);
             
-            this._repository.insert(Attended);
+            this._repository.insert(attended);
 
             this._unitOfWork.Commit();
         }

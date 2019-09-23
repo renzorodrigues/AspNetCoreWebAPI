@@ -8,6 +8,7 @@ namespace webapi.Data.MappingOverrides
     {
         public void Override(AutoMapping<Attended> mapping)
         {
+            mapping.Map(x => x.RegistrationNumber).Not.Nullable();
             mapping.References(x => x.Contact).Not.LazyLoad().Cascade.All();
             mapping.References(x => x.Tutor).Not.LazyLoad().Cascade.All();
         }

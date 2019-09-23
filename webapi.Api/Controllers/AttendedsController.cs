@@ -32,16 +32,16 @@ namespace webapi.Api.Controllers
 
         // POST api/Attendeds
         [HttpPost]
-        public void Post([FromBody] Attended Attended)
+        public void Post([FromBody] Attended attended)
         {
-            this._service.insert(Attended);
+            this._service.insert(attended);
         }
 
         // PUT api/Attendeds/5
         [HttpPut("{id}")]
-        public void Put(Guid id, [FromBody] Attended Attended)
+        public void Put(Guid id, [FromBody] Attended attended)
         {
-            this._service.update(id, Attended);
+            this._service.update(id, attended);
         }
 
         // DELETE api/Attendeds/5
