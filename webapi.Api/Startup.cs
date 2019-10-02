@@ -34,6 +34,7 @@ namespace webapi.Api
             services.AddScoped<IRepository<Evaluator>, Repository<Evaluator>>();
             services.AddScoped<IRepository<Contact>, Repository<Contact>>();
             services.AddScoped<IRepository<Tutor>, Repository<Tutor>>();
+            services.AddScoped<IAttendedRepository, AttendedRepository>();
             
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 

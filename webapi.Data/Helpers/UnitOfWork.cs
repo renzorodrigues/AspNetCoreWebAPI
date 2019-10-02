@@ -3,7 +3,6 @@ using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
-using System.Linq;
 using webapi.Data.MappingOverrides;
 using webapi.Domain.Entities;
 using webapi.Domain.Helpers;
@@ -14,7 +13,6 @@ namespace webapi.Data.Helpers
     {
         private static readonly ISessionFactory _sessionFactory;
         private ITransaction _transaction;
-
         public ISession Session { get; set; }
 
         static UnitOfWork() 
@@ -22,10 +20,10 @@ namespace webapi.Data.Helpers
             _sessionFactory = Fluently.Configure()
                 .Database(MySQLConfiguration.Standard.ConnectionString(
                     x => x.Server("localhost").
-                    //Username("renzo"). //landix
-                    //Password("123456"). //landix
-                    Username("root"). //home
-                    Password("123"). //home
+                    Username("pma"). //landix
+                    Password(""). //landix
+                    //Username("root"). //home
+                    //Password("123"). //home
                     Database("ccaudb")
                 ))
                 .Mappings(x => x.AutoMappings.Add(AutoMap.AssemblyOf<Attended>(new AutomappingConfiguration()).UseOverridesFromAssemblyOf<AttendedMap>()))

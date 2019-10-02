@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using NHibernate;
 using webapi.Data.Helpers;
 using webapi.Domain.Entities;
@@ -11,7 +12,7 @@ namespace webapi.Data.Repositories
 {
     public class Repository<T> : IRepository<T> where T : IEntity
     {
-        private UnitOfWork _unitOfWork;
+        private readonly UnitOfWork _unitOfWork;
         public Repository(IUnitOfWork unitOfWork)
         {
             this._unitOfWork = (UnitOfWork)unitOfWork;

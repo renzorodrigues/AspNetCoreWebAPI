@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using Microsoft.AspNetCore.Mvc;
 using webapi.Domain.Entities;
 using webapi.Domain.Services;
@@ -21,6 +22,13 @@ namespace webapi.Api.Controllers
         public ActionResult<IEnumerable<string>> GetAll()
         {
             return Ok(this._service.getAll());
+        }
+
+        // GET api/Attendeds
+        [HttpGet("search")]
+        public ActionResult<IEnumerable<string>> GetByName(string param)
+        {
+            return Ok(this._service.getByName(param));
         }
 
         // GET api/Attendeds/5

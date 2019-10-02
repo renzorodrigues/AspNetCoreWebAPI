@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using webapi.Domain.Entities;
 
 namespace webapi.Domain.Services
@@ -11,5 +12,6 @@ namespace webapi.Domain.Services
         void insert(Attended Attended);
         void update(Guid id, Attended Attended);
         void delete(Guid id);
+        IEnumerable<Attended> getByName(string name);
     }
 }

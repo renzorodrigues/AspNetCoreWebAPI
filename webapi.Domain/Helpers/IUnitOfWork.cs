@@ -1,3 +1,5 @@
+using webapi.Domain.Repositories;
+
 namespace webapi.Domain.Helpers
 {
     public interface IUnitOfWork

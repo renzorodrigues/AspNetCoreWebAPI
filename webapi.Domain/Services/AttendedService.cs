@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Linq.Expressions;
 using webapi.Domain.Entities;
 using webapi.Domain.Helpers;
 using webapi.Domain.Repositories;
@@ -13,18 +14,20 @@ namespace webapi.Domain.Services
         private readonly IRepository<Attended> _repository;
         private readonly IRepository<Contact> _repositoryContact;
         private readonly IRepository<Tutor> _repositoryTutor;
-
+        private readonly IAttendedRepository _attendedRepository;
         private readonly IUnitOfWork _unitOfWork;
 
         public AttendedService(
             IRepository<Attended> repository,
             IRepository<Contact> repositoryContact,
             IRepository<Tutor> repositoryTutor,
+            IAttendedRepository attendedRepository,
             IUnitOfWork unitOfWork)
         {
             this._repository = repository;
             this._repositoryContact = repositoryContact;
             this._repositoryTutor = repositoryTutor;
+            this._attendedRepository = attendedRepository;
             this._unitOfWork = unitOfWork;
         }
 
@@ -55,17 +58,6 @@ namespace webapi.Domain.Services
             this._unitOfWork.Commit();
         }
 
-        public void update(Guid id, Attended attended)
-        {
-            this._unitOfWork.BeginTransaction();
-
-            Attended entity = this._repository.getById(id);
-
-            updateData(entity, attended);
-
-            this._unitOfWork.Commit();
-        }
-
         public void delete(Guid id)
         {
             this._unitOfWork.BeginTransaction();
@@ -73,6 +65,17 @@ namespace webapi.Domain.Services
             Attended entity = this._repository.getById(id);
 
             this._repository.delete(entity);
+
+            this._unitOfWork.Commit();
+        }
+
+        public void update(Guid id, Attended attended)
+        {
+            this._unitOfWork.BeginTransaction();
+
+            Attended entity = this._repository.getById(id);
+
+            updateData(entity, attended);
 
             this._unitOfWork.Commit();
         }
@@ -126,6 +129,11 @@ namespace webapi.Domain.Services
                 attended.Tutor.Id = Guid.NewGuid();
                 
             attended.Id = Guid.NewGuid();
+        }
+
+        public IEnumerable<Attended> getByName(string name)
+        {
+            return this._attendedRepository.getByName(name);
         }
     }
 }
