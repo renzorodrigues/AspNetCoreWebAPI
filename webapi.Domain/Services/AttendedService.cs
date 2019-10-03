@@ -41,7 +41,7 @@ namespace webapi.Domain.Services
             return this._repository.getById(id);
         }
 
-        public void insert(Attended attended)
+        public object insert(Attended attended)
         {
             this._unitOfWork.BeginTransaction();
 
@@ -53,9 +53,11 @@ namespace webapi.Domain.Services
             if (attended.Tutor != null)
                 this._repositoryTutor.insert(attended.Tutor);
             
-            this._repository.insert(attended);
+            var obj =  this._repository.insert(attended);
 
             this._unitOfWork.Commit();
+
+            return obj;
         }
 
         public void delete(Guid id)

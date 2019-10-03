@@ -40,9 +40,16 @@ namespace webapi.Api.Controllers
 
         // POST api/Attendeds
         [HttpPost]
-        public void Post([FromBody] Attended attended)
+        public IActionResult Post([FromBody] Attended attended)
         {
-            this._service.insert(attended);
+            try
+            {
+                return Ok(this._service.insert(attended));
+            }
+            catch (Exception e)
+            {
+                return StatusCode(422, "Unprocessable Entity: " + e.InnerException.Message);
+            }
         }
 
         // PUT api/Attendeds/5

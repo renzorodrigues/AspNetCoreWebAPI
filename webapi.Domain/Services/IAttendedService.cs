@@ -9,7 +9,7 @@ namespace webapi.Domain.Services
     {
         IEnumerable<Attended> getAll();
         Attended getById(Guid id);
-        void insert(Attended Attended);
+        object insert(Attended Attended);
         void update(Guid id, Attended Attended);
         void delete(Guid id);
         IEnumerable<Attended> getByName(string name);

@@ -30,9 +30,9 @@ namespace webapi.Data.Repositories
             return this.Session.Get<T>(id);
         }
 
-        public void insert(T entity)
+        public object insert(T entity)
         {
-            this.Session.Save(entity);
+            return this.Session.Save(entity);
         }
 
         public void update(T entity)
