@@ -7,6 +7,6 @@ namespace webapi.Domain.Repositories
 {
     public interface IAttendedRepository : IRepository<Attended>
     {
-        IEnumerable<Attended> getByName(string name);
+        IEnumerable<Attended> getByName(string search);
     }
 }

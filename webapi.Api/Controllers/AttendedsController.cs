@@ -26,9 +26,9 @@ namespace webapi.Api.Controllers
 
         // GET api/Attendeds
         [HttpGet("search")]
-        public ActionResult<IEnumerable<string>> GetByName(string param)
+        public ActionResult<IEnumerable<string>> GetByName(string search)
         {
-            return Ok(this._service.getByName(param));
+            return Ok(this._service.getByName(search));
         }
 
         // GET api/Attendeds/5

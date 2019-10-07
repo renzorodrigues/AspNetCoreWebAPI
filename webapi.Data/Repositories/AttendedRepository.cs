@@ -15,10 +15,10 @@ namespace webapi.Data.Repositories
             this._unitOfWork = (UnitOfWork)unitOfWork;
         }
 
-        public IEnumerable<Attended> getByName(string param)
+        public IEnumerable<Attended> getByName(string search)
         {
             var attendeds = this._unitOfWork.Session.Query<Attended>()
-            .Where(x => x.Name.Contains(param) || x.RegistrationNumber.ToString() == param);
+            .Where(x => x.Name.Contains(search) || x.RegistrationNumber.ToString() == search);
             return attendeds;
         }
     }

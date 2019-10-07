@@ -12,6 +12,6 @@ namespace webapi.Domain.Services
         object insert(Attended Attended);
         void update(Guid id, Attended Attended);
         void delete(Guid id);
-        IEnumerable<Attended> getByName(string name);
+        IEnumerable<Attended> getByName(string search);
     }
 }

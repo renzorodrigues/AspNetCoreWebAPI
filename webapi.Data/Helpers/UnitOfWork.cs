@@ -20,10 +20,10 @@ namespace webapi.Data.Helpers
             _sessionFactory = Fluently.Configure()
                 .Database(MySQLConfiguration.Standard.ConnectionString(
                     x => x.Server("localhost").
-                    // Username("pma"). //landix
-                    // Password(""). //landix
-                    Username("root"). //home
-                    Password("123"). //home
+                    Username("pma"). //landix
+                    Password(""). //landix
+                    // Username("root"). //home
+                    // Password("123"). //home
                     Database("ccaudb")
                 ))
                 .Mappings(x => x.AutoMappings.Add(AutoMap.AssemblyOf<Attended>(new AutomappingConfiguration()).UseOverridesFromAssemblyOf<AttendedMap>()))

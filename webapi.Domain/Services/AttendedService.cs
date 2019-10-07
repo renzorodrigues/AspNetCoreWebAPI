@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Linq.Expressions;
 using webapi.Domain.Entities;
 using webapi.Domain.Helpers;
 using webapi.Domain.Repositories;
@@ -92,7 +90,7 @@ namespace webapi.Domain.Services
             
             if (entity.Contact != null)
             {
-                entity.Contact.TelphoneNumber = attended.Contact.TelphoneNumber;
+                entity.Contact.TelephoneNumber = attended.Contact.TelephoneNumber;
                 entity.Contact.MobileNumber = attended.Contact.MobileNumber;
                 entity.Contact.Email = attended.Contact.Email;
             }
@@ -133,9 +131,9 @@ namespace webapi.Domain.Services
             attended.Id = Guid.NewGuid();
         }
 
-        public IEnumerable<Attended> getByName(string name)
+        public IEnumerable<Attended> getByName(string search)
         {
-            return this._attendedRepository.getByName(name);
+            return this._attendedRepository.getByName(search);
         }
     }
 }
