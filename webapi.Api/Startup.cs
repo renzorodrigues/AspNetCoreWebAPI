@@ -27,9 +27,11 @@ namespace webapi.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<IAttendedService, AttendedService>();
             services.AddScoped<IEvaluatorService, EvaluatorService>();
 
+            services.AddScoped<ILoginRepository, LoginRepository>();
             services.AddScoped<IRepository<Attended>, Repository<Attended>>();
             services.AddScoped<IRepository<Evaluator>, Repository<Evaluator>>();
             services.AddScoped<IRepository<Contact>, Repository<Contact>>();

@@ -26,6 +26,7 @@ namespace webapi.Data.Helpers
                     // Password("123"). //home
                     Database("ccaudb")
                 ))
+                .Mappings(x => x.AutoMappings.Add(AutoMap.AssemblyOf<Login>(new AutomappingConfiguration()).UseOverridesFromAssemblyOf<LoginMap>()))
                 .Mappings(x => x.AutoMappings.Add(AutoMap.AssemblyOf<Attended>(new AutomappingConfiguration()).UseOverridesFromAssemblyOf<AttendedMap>()))
                 .Mappings(x => x.AutoMappings.Add(AutoMap.AssemblyOf<Evaluator>(new AutomappingConfiguration()).UseOverridesFromAssemblyOf<EvaluatorMap>()))
                 .ExposeConfiguration(config => new SchemaUpdate(config).Execute(false, true))
