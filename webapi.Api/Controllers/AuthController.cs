@@ -1,4 +1,5 @@
 using System;
+using System.Security.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using webapi.Domain.Entities;
 using webapi.Domain.Services;
@@ -9,8 +10,8 @@ namespace webapi.Api.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly IAuthService _authService;
-        public AuthController(IAuthService authService)
+        private readonly IUserAuthService _authService;
+        public AuthController(IUserAuthService authService)
         {
             this._authService = authService;
         }
@@ -19,7 +20,14 @@ namespace webapi.Api.Controllers
         [HttpPost]
         public IActionResult Authenticate([FromBody] UserAuth credentials)
         {
-            return Ok(this._authService.authenticate(credentials));
+            try
+            {
+                return Ok(this._authService.authenticate(credentials));
+            }
+            catch (InvalidCredentialException  e)
+            {
+                return StatusCode(401, "Unauthorized: " + e.Message);
+            }
         }
 
         // POST api/register
@@ -32,7 +40,7 @@ namespace webapi.Api.Controllers
             }
             catch (Exception e)
             {
-                return StatusCode(400, "Bad Request: " + e.InnerException.Message);
+                return StatusCode(400, "Bad Request: " + e.Message);
             }
         }
     }

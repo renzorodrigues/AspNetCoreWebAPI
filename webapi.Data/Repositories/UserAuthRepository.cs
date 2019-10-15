@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using webapi.Data.Helpers;
 using webapi.Domain.Entities;
@@ -14,15 +15,11 @@ namespace webapi.Data.Repositories
             this._unitOfWork = (UnitOfWork)unitOfWork;
         }
 
-        public bool authenticate(UserAuth credentials)
+        public UserAuth authenticate(UserAuth credentials)
         {
             var result = this._unitOfWork.Session.Query<UserAuth>()
-            .Where(x => x.Email == credentials.Email && x.Password == credentials.Password);
-            
-            if (result.Any())
-                return true;
-            else
-                return false;
+            .SingleOrDefault(x => x.Email == credentials.Email && x.Password == credentials.Password);
+            return result;
         }
     }
 }

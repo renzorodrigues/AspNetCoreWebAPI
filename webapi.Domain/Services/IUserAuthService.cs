@@ -2,9 +2,9 @@ using webapi.Domain.Entities;
 
 namespace webapi.Domain.Services
 {
-    public interface IAuthService
+    public interface IUserAuthService
     {
-        bool authenticate(UserAuth login);
+        string authenticate(UserAuth login);
         object register(UserAuth credentials);
     }
 }
