@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using webapi.Data.Helpers;
 using webapi.Domain.Entities;
@@ -7,18 +6,18 @@ using webapi.Domain.Repositories;
 
 namespace webapi.Data.Repositories
 {
-    public class LoginRepository : Repository<Login>, ILoginRepository
+    public class AuthRepository : Repository<Auth>, IAuthRepository
     {
         private readonly UnitOfWork _unitOfWork;
-        public LoginRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public AuthRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
             this._unitOfWork = (UnitOfWork)unitOfWork;
         }
 
-        public bool authenticate(Login login)
+        public bool authenticate(Auth credentials)
         {
-            var result = this._unitOfWork.Session.Query<Login>()
-            .Where(x => x.Email == login.Email && x.Password == login.Password);
+            var result = this._unitOfWork.Session.Query<Auth>()
+            .Where(x => x.Email == credentials.Email && x.Password == credentials.Password);
             
             if (result.Any())
                 return true;

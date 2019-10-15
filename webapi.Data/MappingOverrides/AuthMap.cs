@@ -4,9 +4,9 @@ using webapi.Domain.Entities;
 
 namespace webapi.Data.MappingOverrides
 {
-    public class LoginMap : IAutoMappingOverride<Login>
+    public class AuthMap : IAutoMappingOverride<Auth>
     {
-        public void Override(AutoMapping<Login> mapping)
+        public void Override(AutoMapping<Auth> mapping)
         {
             
         }
