@@ -6,17 +6,17 @@ using webapi.Domain.Repositories;
 
 namespace webapi.Data.Repositories
 {
-    public class AuthRepository : Repository<Auth>, IAuthRepository
+    public class UserAuthRepository : Repository<UserAuth>, IUserAuthRepository
     {
         private readonly UnitOfWork _unitOfWork;
-        public AuthRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public UserAuthRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
             this._unitOfWork = (UnitOfWork)unitOfWork;
         }
 
-        public bool authenticate(Auth credentials)
+        public bool authenticate(UserAuth credentials)
         {
-            var result = this._unitOfWork.Session.Query<Auth>()
+            var result = this._unitOfWork.Session.Query<UserAuth>()
             .Where(x => x.Email == credentials.Email && x.Password == credentials.Password);
             
             if (result.Any())

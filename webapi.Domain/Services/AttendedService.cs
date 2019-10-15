@@ -14,18 +14,21 @@ namespace webapi.Domain.Services
         private readonly IRepository<Tutor> _repositoryTutor;
         private readonly IAttendedRepository _attendedRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ICreateGUID _createGuid;
 
         public AttendedService(
             IRepository<Attended> repository,
             IRepository<Contact> repositoryContact,
             IRepository<Tutor> repositoryTutor,
             IAttendedRepository attendedRepository,
+            ICreateGUID createGUID,
             IUnitOfWork unitOfWork)
         {
             this._repository = repository;
             this._repositoryContact = repositoryContact;
             this._repositoryTutor = repositoryTutor;
             this._attendedRepository = attendedRepository;
+            this._createGuid = createGUID;
             this._unitOfWork = unitOfWork;
         }
 
@@ -42,19 +45,22 @@ namespace webapi.Domain.Services
         public object insert(Attended attended)
         {
             this._unitOfWork.BeginTransaction();
-
-            this.newGuid(attended);
            
             if (attended.Contact != null)
+            {
+                this._createGuid.newGuid(attended.Contact.Id);
                 this._repositoryContact.insert(attended.Contact);
-            
+            }
+
             if (attended.Tutor != null)
+            {
+                this._createGuid.newGuid(attended.Tutor.Id);
                 this._repositoryTutor.insert(attended.Tutor);
+            }
             
+            this._createGuid.newGuid(attended.Id);
             var obj =  this._repository.insert(attended);
-
             this._unitOfWork.Commit();
-
             return obj;
         }
 
@@ -119,18 +125,6 @@ namespace webapi.Domain.Services
                 }      
             }
         }
-
-        private void newGuid(Attended attended)
-        {
-            if (attended.Contact != null)
-                attended.Contact.Id = Guid.NewGuid();
-
-            if (attended.Tutor != null)
-                attended.Tutor.Id = Guid.NewGuid();
-                
-            attended.Id = Guid.NewGuid();
-        }
-
         public IEnumerable<Attended> getByName(string search)
         {
             return this._attendedRepository.getByName(search);

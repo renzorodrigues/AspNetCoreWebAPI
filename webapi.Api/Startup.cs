@@ -31,7 +31,7 @@ namespace webapi.Api
             services.AddScoped<IAttendedService, AttendedService>();
             services.AddScoped<IEvaluatorService, EvaluatorService>();
 
-            services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IUserAuthRepository, UserAuthRepository>();
             services.AddScoped<IRepository<Attended>, Repository<Attended>>();
             services.AddScoped<IRepository<Evaluator>, Repository<Evaluator>>();
             services.AddScoped<IRepository<Contact>, Repository<Contact>>();
@@ -39,6 +39,7 @@ namespace webapi.Api
             services.AddScoped<IAttendedRepository, AttendedRepository>();
             
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ICreateGUID, CreateGUID>();
 
             services.AddCors(options => {
                 options.AddPolicy(MyAllowSpecificOrigins, builder => {

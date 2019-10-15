@@ -17,14 +17,14 @@ namespace webapi.Api.Controllers
 
         // POST api/auth
         [HttpPost]
-        public IActionResult Authenticate([FromBody] Auth credentials)
+        public IActionResult Authenticate([FromBody] UserAuth credentials)
         {
             return Ok(this._authService.authenticate(credentials));
         }
 
         // POST api/register
         [HttpPost("register")]
-        public IActionResult Register([FromBody] Auth credentials)
+        public IActionResult Register([FromBody] UserAuth credentials)
         {
             try
             {
