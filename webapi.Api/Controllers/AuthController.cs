@@ -34,14 +34,10 @@ namespace webapi.Api.Controllers
         [HttpPost("register")]
         public IActionResult Register([FromBody] UserAuth credentials)
         {
-            try
-            {
+            if (string.IsNullOrEmpty(credentials.Email) || string.IsNullOrEmpty(credentials.Password))
+                return StatusCode(400, "Bad Request");
+            else
                 return Ok(this._authService.register(credentials));
-            }
-            catch (Exception e)
-            {
-                return StatusCode(400, "Bad Request: " + e.Message);
-            }
         }
     }
 }
