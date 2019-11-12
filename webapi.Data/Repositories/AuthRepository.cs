@@ -14,15 +14,17 @@ namespace webapi.Data.Repositories
             this._unitOfWork = (UnitOfWork)unitOfWork;
         }
 
-        public bool authenticate(Auth credentials)
+        public Auth authenticate(Auth credentials)
         {
             var result = this._unitOfWork.Session.Query<Auth>()
-            .Where(x => x.Email == credentials.Email && x.Password == credentials.Password);
+            .Where(x => x.Email == credentials.Email);
             
             if (result.Any())
-                return true;
+            {
+                return result.FirstOrDefault();
+            } 
             else
-                return false;
+                return null;
         }
     }
 }
