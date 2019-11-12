@@ -2,8 +2,8 @@ using webapi.Domain.Entities;
 
 namespace webapi.Domain.Repositories
 {
-    public interface IAuthRepository : IRepository<Auth>
+    public interface IAuthRepository : IRepository<UserAuth>
     {
-         Auth authenticate(Auth credentials);
+         UserAuth authenticate(UserAuth credentials);
     }
 }

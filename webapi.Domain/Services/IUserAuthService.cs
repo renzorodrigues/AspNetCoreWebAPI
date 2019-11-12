@@ -4,7 +4,7 @@ namespace webapi.Domain.Services
 {
     public interface IUserAuthService
     {
-        string authenticate(UserAuth login);
-        UserAuth register(UserAuth credentials);
+        bool authenticate(UserAuth login);
+        object register(UserAuth credentials);
     }
 }
